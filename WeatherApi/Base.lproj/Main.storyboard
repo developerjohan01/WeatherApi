@@ -8,29 +8,101 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherApi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VQ-8w-N4p">
-                                <rect key="frame" x="186" y="81" width="65" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VQ-8w-N4p">
+                                <rect key="frame" x="165" y="58" width="84" height="20"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City name: Cape Town" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-ZR-oWK">
+                                <rect key="frame" x="20" y="86" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJb-jD-ZL4">
+                                <rect key="frame" x="20" y="128" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6U-GH-GK5">
+                                <rect key="frame" x="20" y="170" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n75-eQ-cxV">
+                                <rect key="frame" x="152" y="250" width="110" height="30"/>
+                                <state key="normal" title="Get the weather"/>
+                                <connections>
+                                    <action selector="getWeatherButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHm-Ae-9im"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hY-Ub-CcT">
+                                <rect key="frame" x="140" y="212" width="134" height="30"/>
+                                <state key="normal" title="Get my coordinates"/>
+                                <connections>
+                                    <action selector="getCoordinatesButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mgo-hf-uRX"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F1t-GW-TQW">
+                                <rect key="frame" x="0.0" y="288" width="414" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="forcastCell" id="8Hk-m5-oTB">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Hk-m5-oTB" id="F0O-Q6-3DJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bZp-il-l0Q"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="llA-wz-26d"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="n75-eQ-cxV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="16w-id-yIs"/>
+                            <constraint firstItem="7hY-Ub-CcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="399-VL-k6F"/>
+                            <constraint firstItem="7hY-Ub-CcT" firstAttribute="top" secondItem="r6U-GH-GK5" secondAttribute="bottom" constant="8" id="3Si-a9-9UL"/>
+                            <constraint firstItem="MJb-jD-ZL4" firstAttribute="top" secondItem="O5c-ZR-oWK" secondAttribute="bottom" constant="8" id="4MU-Y7-hJe"/>
+                            <constraint firstItem="MJb-jD-ZL4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="884-p6-BLE"/>
+                            <constraint firstItem="3VQ-8w-N4p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9pe-6c-xs2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O5c-ZR-oWK" secondAttribute="trailing" constant="20" id="ML9-MM-2aX"/>
+                            <constraint firstItem="O5c-ZR-oWK" firstAttribute="top" secondItem="3VQ-8w-N4p" secondAttribute="bottom" constant="8" id="SH9-cr-gYr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MJb-jD-ZL4" secondAttribute="trailing" constant="20" id="SmF-XD-kwC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r6U-GH-GK5" secondAttribute="trailing" constant="20" id="Tn4-Pm-Ehg"/>
+                            <constraint firstItem="3VQ-8w-N4p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="Z7i-ic-Q7g"/>
+                            <constraint firstItem="O5c-ZR-oWK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bKx-VJ-Zf5"/>
+                            <constraint firstItem="r6U-GH-GK5" firstAttribute="top" secondItem="MJb-jD-ZL4" secondAttribute="bottom" constant="8" id="iAH-dB-bjN"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="top" secondItem="n75-eQ-cxV" secondAttribute="bottom" constant="8" id="pHd-Sh-B5x"/>
+                            <constraint firstItem="n75-eQ-cxV" firstAttribute="top" secondItem="7hY-Ub-CcT" secondAttribute="bottom" constant="8" id="rSI-HR-uzC"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u8T-FS-sU1"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vlZ-xD-cXI"/>
+                            <constraint firstItem="r6U-GH-GK5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wyz-3o-uuX"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yNU-Dx-lib"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="latitudeLabel" destination="MJb-jD-ZL4" id="V5j-aL-FhS"/>
+                        <outlet property="longitudeLabel" destination="r6U-GH-GK5" id="ZV9-xj-o1U"/>
+                        <outlet property="placeField" destination="O5c-ZR-oWK" id="6ue-6L-6c7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="139"/>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

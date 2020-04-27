@@ -10,28 +10,29 @@ import UIKit
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var forcastData = ["Rain", "Sun", "Windy", "Cloudy"]
-    var selectedDetails: AnyObject? // TODO check AnyObject?
+    var forecastData: [Forecast]? // ["Rain", "Sun", "Windy", "Cloudy"]
+var selectedDetails: Forecast? // TODO check AnyObject?
     var service = Service()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Weather App Runns")
-        service.fetchData()
+        forecastData = service.fetchData() ?? []
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        forcastData.count
+        forecastData!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "forecastCell")
-        cell.textLabel?.text = forcastData[indexPath.row]
+        let forecast = forecastData![indexPath.row]
+        cell.textLabel?.text = "\(forecast.dateText)  \(forecast.temp)C  \(forecast.weather.main)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetails = forcastData[indexPath.row] as AnyObject
+        selectedDetails = forecastData![indexPath.row] as Forecast
         performSegue(withIdentifier: "toForecastDetails", sender: nil)
     }
 

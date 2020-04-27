@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,9 @@
 		AABD9C2E2456E80000E04181 /* WeatherApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C2D2456E80000E04181 /* WeatherApiUITests.swift */; };
 		AAC7E245245707DC006A7DB4 /* ForecastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */; };
 		AAC7E247245718C2006A7DB4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7E246245718C2006A7DB4 /* Service.swift */; };
+		AAF0AA9A24575C6300C75F8E /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AA9924575C6300C75F8E /* Forecast.swift */; };
+		AAF0AA9C24575C7300C75F8E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AA9B24575C7300C75F8E /* Weather.swift */; };
+		AAF0AAA124576B0A00C75F8E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AAA024576B0A00C75F8E /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		AABD9C2F2456E80000E04181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailsViewController.swift; sourceTree = "<group>"; };
 		AAC7E246245718C2006A7DB4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AAF0AA9924575C6300C75F8E /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		AAF0AA9B24575C7300C75F8E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		AAF0AAA024576B0A00C75F8E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BA2C2C9C4B8B511D8CFAF375 /* Pods-WeatherApiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApiTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherApiTests/Pods-WeatherApiTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD4702F8F3B0563C19EA60DC /* Pods_WeatherApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,6 +135,7 @@
 				AABD9C162456E80000E04181 /* LaunchScreen.storyboard */,
 				AABD9C192456E80000E04181 /* Info.plist */,
 				AAC7E246245718C2006A7DB4 /* Service.swift */,
+				AAF0AA9D24575D1200C75F8E /* model */,
 			);
 			path = WeatherApi;
 			sourceTree = "<group>";
@@ -151,6 +158,16 @@
 			path = WeatherApiUITests;
 			sourceTree = "<group>";
 		};
+		AAF0AA9D24575D1200C75F8E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AAF0AA9924575C6300C75F8E /* Forecast.swift */,
+				AAF0AA9B24575C7300C75F8E /* Weather.swift */,
+				AAF0AAA024576B0A00C75F8E /* Location.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		E8684D1493575FEEDE01ECD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +188,6 @@
 				4C1DE95C5D8218F9B07377E2 /* Pods-WeatherApiTests.debug.xcconfig */,
 				BA2C2C9C4B8B511D8CFAF375 /* Pods-WeatherApiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -416,9 +432,12 @@
 			files = (
 				AABD9C102456E7FF00E04181 /* WeatherViewController.swift in Sources */,
 				AABD9C0C2456E7FF00E04181 /* AppDelegate.swift in Sources */,
+				AAF0AAA124576B0A00C75F8E /* Location.swift in Sources */,
 				AAC7E247245718C2006A7DB4 /* Service.swift in Sources */,
 				AAC7E245245707DC006A7DB4 /* ForecastDetailsViewController.swift in Sources */,
+				AAF0AA9A24575C6300C75F8E /* Forecast.swift in Sources */,
 				AABD9C0E2456E7FF00E04181 /* SceneDelegate.swift in Sources */,
+				AAF0AA9C24575C7300C75F8E /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

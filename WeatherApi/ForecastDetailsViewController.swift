@@ -10,16 +10,24 @@ import UIKit
 
 class ForecastDetailsViewController: UIViewController {
 
-    var forecastDetails: AnyObject?
+    var forecastDetails: Forecast?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        forecastDetailsLabel.text = forecastDetails as? String
+        if forecastDetails != nil {
+            outlookLabel.text = "Outlook: \(forecastDetails!.weather.description)"
+            temperatureLabel.text = "Temperature: \(forecastDetails!.temp) C"
+            dateLabel.text = "On the: \(forecastDetails!.dateText)"
+        }
     }
     
-    @IBOutlet weak var forecastDetailsLabel: UILabel!
+    @IBOutlet weak var outlookLabel: UILabel!
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
     
     /*
     // MARK: - Navigation

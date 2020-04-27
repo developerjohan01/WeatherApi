@@ -131,32 +131,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxL-x3-BdE">
-                                <rect key="frame" x="20" y="42" width="374" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a46-ob-wmP">
-                                <rect key="frame" x="183" y="162" width="48" height="30"/>
+                                <rect key="frame" x="183" y="406" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <segue destination="WSd-ej-gy7" kind="unwind" unwindAction="unwindToWeatherForecast:" id="dNP-mm-KCk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outlook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-8Q-DxH">
+                                <rect key="frame" x="170.5" y="78" width="73.5" height="19"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoB-Ag-o2Y">
+                                <rect key="frame" x="185" y="177" width="44" height="19"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8v-sb-kFo">
+                                <rect key="frame" x="146.5" y="120" width="121" height="19"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="53Q-7H-HGj"/>
+                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="Afo-hE-tZU"/>
+                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="top" secondItem="RLE-yr-hcE" secondAttribute="bottom" constant="44" id="WhK-sN-tGO"/>
+                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="top" secondItem="T8v-sb-kFo" secondAttribute="bottom" constant="38" id="YVA-oh-KE3"/>
                             <constraint firstItem="RLE-yr-hcE" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="gjK-Mh-EQM"/>
+                            <constraint firstItem="T8v-sb-kFo" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="s7G-Cj-dDH"/>
+                            <constraint firstItem="T8v-sb-kFo" firstAttribute="top" secondItem="E0C-8Q-DxH" secondAttribute="bottom" constant="23" id="tqG-lp-Xfm"/>
                             <constraint firstItem="RLE-yr-hcE" firstAttribute="top" secondItem="12v-2D-bQw" secondAttribute="top" constant="14" id="wWs-5g-oqP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="12v-2D-bQw"/>
                     </view>
                     <navigationItem key="navigationItem" id="AT7-ng-yN6"/>
                     <connections>
-                        <outlet property="forecastDetailsLabel" destination="dxL-x3-BdE" id="hj5-2C-tbQ"/>
+                        <outlet property="dateLabel" destination="BoB-Ag-o2Y" id="AO1-cP-EQ8"/>
+                        <outlet property="outlookLabel" destination="E0C-8Q-DxH" id="o5h-BB-5Sy"/>
+                        <outlet property="temperatureLabel" destination="T8v-sb-kFo" id="Vzt-Ev-2jd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dG0-ST-keB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

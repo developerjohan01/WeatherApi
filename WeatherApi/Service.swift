@@ -11,13 +11,18 @@ import SwiftyJSON
 
 class Service {
     
-    var theLocationName: String?
-    let apiKey = "95e2e94ea24ac96e4906922370157046"
-    var dataArray: [AnyObject]?
+    let unknownText = "Unknown"
+    var locationName: String?
+    var locationLatitude: Double?
+    var locationLongitude: Double?
+    var location: Location?
     
-    func fetchData() {
+    let apiKey = "95e2e94ea24ac96e4906922370157046"
+    var forecastList: [Forecast]?
+    
+    func fetchData() -> [Forecast]? {
         let semaphore = DispatchSemaphore (value: 0)
-        
+        forecastList = [Forecast]()
         //      let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
         let url = URL(string: urlString)
@@ -31,30 +36,72 @@ class Service {
             do {
                 let json = try JSON(data: data);
                 print(json)
-                let nameResult = json["name"]
+                let nameResult = json["city"]["name"]
                 if let name = nameResult.string {
-                    self.theLocationName = name
+                    self.locationName = name
                 } else {
                     print(nameResult.error ?? "unknown error")
                 }
-                if let temperature = json["main"]["temp"].double {
-                    print("temparature: \(temperature)")
+                print("self.locationName")
+                print(self.locationName as Any)
+                
+                let latResult = json["city"]["coord"]["lat"]
+                if let lat = latResult.double {
+                    self.locationLatitude = lat
                 } else {
-                    print("JSON Error")
+                    print(nameResult.error ?? "unknown error")
                 }
-                let bobResult = json["bob"]
-                if let bob = bobResult.dictionary {
-                    print(bob)
+                print("self.locationLatitude")
+                print(self.locationLatitude as Any)
+
+                let lonResult = json["city"]["coord"]["lon"]
+                if let lon = lonResult.double {
+                    self.locationLongitude = lon
                 } else {
-                    print(bobResult.error ?? "unknown error")
+                    print(nameResult.error ?? "unknown error")
                 }
+                print("self.locationLongitude")
+                print(self.locationLongitude as Any)
+                
+                self.location = Location(name: self.locationName ?? self.unknownText, latitude: self.locationLatitude ?? 0.0, longitude: self.locationLongitude ?? 0.0)
+                print("self.location")
+                print(self.location!)
+                
+                let forecastResult = json["list"]
+                if let forecastList = forecastResult.array {
+                    for forecastObject in forecastList {
+                        let temp = forecastObject["main"]["temp"].double ?? 0.0
+                        let weatherMain = forecastObject["weather"][0]["main"].string ?? self.unknownText
+                        let weatherDescription = forecastObject["weather"][0]["description"].string ?? self.unknownText
+                        let w = Weather(main: weatherMain, description: weatherDescription)
+                        let dateText = forecastObject["dt_txt"].string ?? self.unknownText
+                        let f = Forecast(temp: temp, weather: w, dateText: dateText)
+                        self.forecastList?.append(f)
+                    }
+                } else {
+                    print(forecastResult.error ?? "unknown error")
+                }
+                print("self.forecastList!")
+                print(self.forecastList!)
+                
+//                if let temperature = json["main"]["temp"].double {
+//                    print("temparature: \(temperature)")
+//                } else {
+//                    print("JSON Error")
+//                }
+//                let bobResult = json["bob"]
+//                if let bob = bobResult.dictionary {
+//                    print(bob)
+//                } else {
+//                    print(bobResult.error ?? "unknown error")
+//                }
                 
                 DispatchQueue.main.async {
                     print("inside DispatchQueue.main.async")
                 }
                 
             } catch {
-                print("JSON Error")
+                print("catch JSON Error")
             }
             
             print("before semaphore.signal()")
@@ -67,5 +114,6 @@ class Service {
         print("before semaphore.wait()")
         semaphore.wait()
         print("after semaphore.wait()")
+        return forecastList
     }
 }

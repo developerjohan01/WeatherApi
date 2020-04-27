@@ -11,6 +11,13 @@ import UIKit
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var forcastData = ["Rain", "Sun", "Windy", "Cloudy"]
+    var selectedDetails: AnyObject? // TODO check AnyObject?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        print("Weather App Runns")
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         forcastData.count
@@ -22,10 +29,9 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("Weather App Runns")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedDetails = forcastData[indexPath.row] as AnyObject
+        performSegue(withIdentifier: "toForecastDetails", sender: nil)
     }
 
     @IBOutlet weak var placeField: UITextField!
@@ -51,6 +57,24 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
    func getForecast() {
        print("getForecast")
    }
+    
+    // MARK: Navigate
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toForecastDetails" {
+            let detailsVc = segue.destination as! ForecastDetailsViewController
+            detailsVc.forecastDetails = selectedDetails
+        } else {
+            print("Could not navigate")
+        }
+    }
+    
+    @IBAction func unwindToWeatherForecast(_ unwindSegue: UIStoryboardSegue) {
+        let detailsVc = unwindSegue.source as! ForecastDetailsViewController
+        print(detailsVc.forecastDetails ?? "No details")
+    }
     
     // MARK: Keyboard control
     

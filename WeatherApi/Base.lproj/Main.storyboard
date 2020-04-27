@@ -71,6 +71,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="3Gb-0Y-RaD" kind="show" identifier="toForecastDetails" id="bUn-3w-BqG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -113,6 +116,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Forecast Details View Controller-->
+        <scene sceneID="F3q-D3-pvu">
+            <objects>
+                <viewController id="3Gb-0Y-RaD" customClass="ForecastDetailsViewController" customModule="WeatherApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OqA-dy-G1p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather forcast details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-yr-hcE">
+                                <rect key="frame" x="90.5" y="14" width="233" height="20"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxL-x3-BdE">
+                                <rect key="frame" x="20" y="42" width="374" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a46-ob-wmP">
+                                <rect key="frame" x="183" y="162" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="WSd-ej-gy7" kind="unwind" unwindAction="unwindToWeatherForecast:" id="dNP-mm-KCk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RLE-yr-hcE" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="gjK-Mh-EQM"/>
+                            <constraint firstItem="RLE-yr-hcE" firstAttribute="top" secondItem="12v-2D-bQw" secondAttribute="top" constant="14" id="wWs-5g-oqP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="12v-2D-bQw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AT7-ng-yN6"/>
+                    <connections>
+                        <outlet property="forecastDetailsLabel" destination="dxL-x3-BdE" id="hj5-2C-tbQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dG0-ST-keB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="WSd-ej-gy7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="947.82608695652186" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

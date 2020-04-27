@@ -15,6 +15,7 @@
 		AABD9C182456E80000E04181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABD9C162456E80000E04181 /* LaunchScreen.storyboard */; };
 		AABD9C232456E80000E04181 /* WeatherApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C222456E80000E04181 /* WeatherApiTests.swift */; };
 		AABD9C2E2456E80000E04181 /* WeatherApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C2D2456E80000E04181 /* WeatherApiUITests.swift */; };
+		AAC7E245245707DC006A7DB4 /* ForecastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AABD9C292456E80000E04181 /* WeatherApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABD9C2D2456E80000E04181 /* WeatherApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApiUITests.swift; sourceTree = "<group>"; };
 		AABD9C2F2456E80000E04181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */,
 				AABD9C0F2456E7FF00E04181 /* WeatherViewController.swift */,
 				AABD9C112456E7FF00E04181 /* Main.storyboard */,
+				AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */,
 				AABD9C142456E80000E04181 /* Assets.xcassets */,
 				AABD9C162456E80000E04181 /* LaunchScreen.storyboard */,
 				AABD9C192456E80000E04181 /* Info.plist */,
@@ -261,6 +264,7 @@
 			files = (
 				AABD9C102456E7FF00E04181 /* WeatherViewController.swift in Sources */,
 				AABD9C0C2456E7FF00E04181 /* AppDelegate.swift in Sources */,
+				AAC7E245245707DC006A7DB4 /* ForecastDetailsViewController.swift in Sources */,
 				AABD9C0E2456E7FF00E04181 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

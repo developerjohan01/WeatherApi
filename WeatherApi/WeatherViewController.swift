@@ -12,11 +12,12 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var forcastData = ["Rain", "Sun", "Windy", "Cloudy"]
     var selectedDetails: AnyObject? // TODO check AnyObject?
-    
+    var service = Service()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Weather App Runns")
+        service.fetchData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

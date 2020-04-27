@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var forcastData = ["Rain", "Sun", "Windy", "Cloudy"]
     
@@ -17,7 +17,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "forcastCell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "forecastCell")
         cell.textLabel?.text = forcastData[indexPath.row]
         return cell
     }
@@ -34,12 +34,34 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var longitudeLabel: UITextField!
     
+    @IBOutlet weak var forecastTable: UITableView!
     
     @IBAction func getCoordinatesButton(_ sender: UIButton) {
+        getCoordinates()
     }
     
-    @IBAction func getWeatherButton(_ sender: UIButton) {
+    @IBAction func getForecastButton(_ sender: UIButton) {
+        getForecast()
+    }
+
+   func getCoordinates() {
+       print("getCoordinates")
+   }
+
+   func getForecast() {
+       print("getForecast")
+   }
+    
+    // MARK: Keyboard control
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        getForecast()
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

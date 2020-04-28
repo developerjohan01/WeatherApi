@@ -31,9 +31,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "forecastCell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "forecastCell")
         let forecast = forecastData[indexPath.row]
-        cell.textLabel?.text = "\(forecast.dateText)  \(forecast.temp)C  \(forecast.weather.main)"
+        let forecastDateTime = NSString(string: forecast.dateText)
+        cell.textLabel?.text = "\(forecastDateTime.substring(to: forecastDateTime.length-3))"
+        cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp)C"
         return cell
     }
     

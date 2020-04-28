@@ -126,11 +126,8 @@
 		AABD9C0A2456E7FF00E04181 /* WeatherApi */ = {
 			isa = PBXGroup;
 			children = (
-				AABD9C0B2456E7FF00E04181 /* AppDelegate.swift */,
-				AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */,
+				AAC4114F24587039000DE8FA /* supporting */,
 				AAF0AAA3245806F300C75F8E /* ui */,
-				AABD9C142456E80000E04181 /* Assets.xcassets */,
-				AABD9C162456E80000E04181 /* LaunchScreen.storyboard */,
 				AABD9C192456E80000E04181 /* Info.plist */,
 				AAF0AAA2245805FB00C75F8E /* service */,
 				AAF0AA9D24575D1200C75F8E /* model */,
@@ -154,6 +151,17 @@
 				AABD9C2F2456E80000E04181 /* Info.plist */,
 			);
 			path = WeatherApiUITests;
+			sourceTree = "<group>";
+		};
+		AAC4114F24587039000DE8FA /* supporting */ = {
+			isa = PBXGroup;
+			children = (
+				AABD9C0B2456E7FF00E04181 /* AppDelegate.swift */,
+				AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */,
+				AABD9C142456E80000E04181 /* Assets.xcassets */,
+				AABD9C162456E80000E04181 /* LaunchScreen.storyboard */,
+			);
+			path = supporting;
 			sourceTree = "<group>";
 		};
 		AAF0AA9D24575D1200C75F8E /* model */ = {

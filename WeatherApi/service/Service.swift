@@ -17,21 +17,36 @@ class Service {
     var locationLongitude = 0.0
     var location: Location?
     
-    let apiKey = "95e2e94ea24ac96e4906922370157046"
+    let apiKey = "95e2e94ea24ac96e4906922370157046" // Should be kept secret
     var forecastList = [Forecast]() // Use an empty array/list insted of Optional
     
     func fetchLatestForcastLocation() -> Location {
         return location ?? Location(name: locationName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
     }
     
-    func fetchForcast() -> [Forecast]? {
-        let semaphore = DispatchSemaphore (value: 0)
+    func fetchForcast(city: String?, longitude: Double?, latitude:Double?) -> [Forecast]? {
+        // reset internal storage
         forecastList = [Forecast]()
-        //      let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
+        var urlString = "https://api.openweathermap.org/data/2.5/forecast?"
+        
+        
+        if longitude != nil && latitude != nil {
+            urlString += "lon=" + String(longitude!) + "&lat=" + String(latitude!) + "&units=metric&appid="
+        } else if city != nil || city?.count ?? 0 > 0 {
+            urlString += "q=" + city!.replacingOccurrences(of: " ", with: "%20") + "&units=metric&appid="
+        } else {
+            // default e.g. Cape Town
+            urlString += "lon=18.42&lat=-33.93&units=metric&appid="
+        }
+        // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
+        // let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
+        
+        urlString += apiKey
+        print(urlString)
         let url = URL(string: urlString)
         let request = URLRequest(url: url!) // OK to use ! there - I am setting the string
         //      let request = URLRequest(url: url!,timeoutInterval: Double.infinity) // OK to use ! there - I am setting the string
+        let semaphore = DispatchSemaphore (value: 0)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print(String(describing: error))
@@ -67,7 +82,7 @@ class Service {
                 print("self.locationLongitude")
                 print(self.locationLongitude as Any)
                 
-                self.location = Location(name: self.locationName ?? self.unknownText, latitude: self.locationLatitude ?? 0.0, longitude: self.locationLongitude ?? 0.0)
+                self.location = Location(name: self.locationName ?? self.unknownText, latitude: self.locationLatitude , longitude: self.locationLongitude )
                 print("self.location")
                 print(self.location!)
                 

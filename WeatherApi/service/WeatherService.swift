@@ -27,7 +27,8 @@ class WeatherService {
     // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
     // let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
     
-    fileprivate func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
+    // fileprivate - This should be private
+    func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
         var url = "https://api.openweathermap.org/data/2.5/forecast?"
         if longitude != nil && latitude != nil {
             url += "lon=" + String(longitude!) + "&lat=" + String(latitude!) + "&units=metric&appid="

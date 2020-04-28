@@ -24,6 +24,7 @@
 		AAF0AA9A24575C6300C75F8E /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AA9924575C6300C75F8E /* Forecast.swift */; };
 		AAF0AA9C24575C7300C75F8E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AA9B24575C7300C75F8E /* Weather.swift */; };
 		AAF0AAA124576B0A00C75F8E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AAA024576B0A00C75F8E /* Location.swift */; };
+		AAF0CF382458CA3500428042 /* WeatherServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0CF372458CA3500428042 /* WeatherServiceTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		AAF0AA9924575C6300C75F8E /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		AAF0AA9B24575C7300C75F8E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		AAF0AAA024576B0A00C75F8E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		AAF0CF372458CA3500428042 /* WeatherServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTest.swift; sourceTree = "<group>"; };
 		BA2C2C9C4B8B511D8CFAF375 /* Pods-WeatherApiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApiTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherApiTests/Pods-WeatherApiTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD4702F8F3B0563C19EA60DC /* Pods_WeatherApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +145,7 @@
 			children = (
 				AABD9C222456E80000E04181 /* WeatherApiTests.swift */,
 				AABD9C242456E80000E04181 /* Info.plist */,
+				AAF0CF372458CA3500428042 /* WeatherServiceTest.swift */,
 			);
 			path = WeatherApiTests;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF0CF382458CA3500428042 /* WeatherServiceTest.swift in Sources */,
 				AABD9C232456E80000E04181 /* WeatherApiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

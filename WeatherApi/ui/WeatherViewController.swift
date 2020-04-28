@@ -11,13 +11,19 @@ import UIKit
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var forecastData: [Forecast]? // ["Rain", "Sun", "Windy", "Cloudy"]
-var selectedDetails: Forecast? // TODO check AnyObject?
+    var selectedDetails: Forecast?
+    var lastForecastLocation: Location?
     var service = Service()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Weather App Runns")
-        forecastData = service.fetchData() ?? []
+        forecastData = service.fetchForcast() ?? []
+        lastForecastLocation = service.fetchLatestForcastLocation()
+        placeField.text = lastForecastLocation!.name
+        latitudeField.text = String(lastForecastLocation!.latitude)
+        longitudeField.text = String(lastForecastLocation!.longitude)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,9 +44,9 @@ var selectedDetails: Forecast? // TODO check AnyObject?
 
     @IBOutlet weak var placeField: UITextField!
     
-    @IBOutlet weak var latitudeLabel: UITextField!
+    @IBOutlet weak var latitudeField: UITextField!
     
-    @IBOutlet weak var longitudeLabel: UITextField!
+    @IBOutlet weak var longitudeField: UITextField!
     
     @IBOutlet weak var forecastTable: UITableView!
     

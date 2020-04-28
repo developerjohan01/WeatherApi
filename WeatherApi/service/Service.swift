@@ -13,14 +13,18 @@ class Service {
     
     let unknownText = "Unknown"
     var locationName: String?
-    var locationLatitude: Double?
-    var locationLongitude: Double?
+    var locationLatitude = 0.0
+    var locationLongitude = 0.0
     var location: Location?
     
     let apiKey = "95e2e94ea24ac96e4906922370157046"
     var forecastList: [Forecast]?
     
-    func fetchData() -> [Forecast]? {
+    func fetchLatestForcastLocation() -> Location {
+        return location ?? Location(name: locationName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
+    }
+    
+    func fetchForcast() -> [Forecast]? {
         let semaphore = DispatchSemaphore (value: 0)
         forecastList = [Forecast]()
         //      let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
@@ -35,7 +39,7 @@ class Service {
             }
             do {
                 let json = try JSON(data: data);
-                print(json)
+//                print(json)
                 let nameResult = json["city"]["name"]
                 if let name = nameResult.string {
                     self.locationName = name
@@ -83,18 +87,6 @@ class Service {
                 }
                 print("self.forecastList!")
                 print(self.forecastList!)
-                
-//                if let temperature = json["main"]["temp"].double {
-//                    print("temparature: \(temperature)")
-//                } else {
-//                    print("JSON Error")
-//                }
-//                let bobResult = json["bob"]
-//                if let bob = bobResult.dictionary {
-//                    print(bob)
-//                } else {
-//                    print(bobResult.error ?? "unknown error")
-//                }
                 
                 DispatchQueue.main.async {
                     print("inside DispatchQueue.main.async")

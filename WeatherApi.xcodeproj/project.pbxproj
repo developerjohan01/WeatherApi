@@ -128,13 +128,11 @@
 			children = (
 				AABD9C0B2456E7FF00E04181 /* AppDelegate.swift */,
 				AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */,
-				AABD9C0F2456E7FF00E04181 /* WeatherViewController.swift */,
-				AABD9C112456E7FF00E04181 /* Main.storyboard */,
-				AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */,
+				AAF0AAA3245806F300C75F8E /* ui */,
 				AABD9C142456E80000E04181 /* Assets.xcassets */,
 				AABD9C162456E80000E04181 /* LaunchScreen.storyboard */,
 				AABD9C192456E80000E04181 /* Info.plist */,
-				AAC7E246245718C2006A7DB4 /* Service.swift */,
+				AAF0AAA2245805FB00C75F8E /* service */,
 				AAF0AA9D24575D1200C75F8E /* model */,
 			);
 			path = WeatherApi;
@@ -166,6 +164,24 @@
 				AAF0AAA024576B0A00C75F8E /* Location.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		AAF0AAA2245805FB00C75F8E /* service */ = {
+			isa = PBXGroup;
+			children = (
+				AAC7E246245718C2006A7DB4 /* Service.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		AAF0AAA3245806F300C75F8E /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				AABD9C0F2456E7FF00E04181 /* WeatherViewController.swift */,
+				AABD9C112456E7FF00E04181 /* Main.storyboard */,
+				AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 		E8684D1493575FEEDE01ECD4 /* Frameworks */ = {

@@ -18,7 +18,7 @@ class Service {
     var location: Location?
     
     let apiKey = "95e2e94ea24ac96e4906922370157046"
-    var forecastList: [Forecast]?
+    var forecastList = [Forecast]() // Use an empty array/list insted of Optional
     
     func fetchLatestForcastLocation() -> Location {
         return location ?? Location(name: locationName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
@@ -80,13 +80,13 @@ class Service {
                         let w = Weather(main: weatherMain, description: weatherDescription)
                         let dateText = forecastObject["dt_txt"].string ?? self.unknownText
                         let f = Forecast(temp: temp, weather: w, dateText: dateText)
-                        self.forecastList?.append(f)
+                        self.forecastList.append(f)
                     }
                 } else {
                     print(forecastResult.error ?? "unknown error")
                 }
-                print("self.forecastList!")
-                print(self.forecastList!)
+                print("self.forecastList")
+                print(self.forecastList)
                 
                 DispatchQueue.main.async {
                     print("inside DispatchQueue.main.async")

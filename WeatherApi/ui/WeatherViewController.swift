@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var forecastData: [Forecast]? // ["Rain", "Sun", "Windy", "Cloudy"]
+    var forecastData = [Forecast]() // ["Rain", "Sun", "Windy", "Cloudy"]
     var selectedDetails: Forecast?
     var lastForecastLocation: Location?
     var service = Service()
@@ -27,18 +27,18 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        forecastData!.count
+        forecastData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "forecastCell")
-        let forecast = forecastData![indexPath.row]
+        let forecast = forecastData[indexPath.row]
         cell.textLabel?.text = "\(forecast.dateText)  \(forecast.temp)C  \(forecast.weather.main)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetails = forecastData![indexPath.row] as Forecast
+        selectedDetails = forecastData[indexPath.row] as Forecast
         performSegue(withIdentifier: "toForecastDetails", sender: nil)
     }
 

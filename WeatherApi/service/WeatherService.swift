@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class Service {
+class WeatherService {
     
     let unknownText = "Unknown"
     var locationName: String?
@@ -24,24 +24,27 @@ class Service {
         return location ?? Location(name: locationName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
     }
     
+    // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
+    // let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
+    
+    fileprivate func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
+        var url = "https://api.openweathermap.org/data/2.5/forecast?"
+        if longitude != nil && latitude != nil {
+            url += "lon=" + String(longitude!) + "&lat=" + String(latitude!) + "&units=metric&appid="
+        } else if city != nil || city?.count ?? 0 > 0 {
+            url += "q=" + city!.replacingOccurrences(of: " ", with: "%20") + "&units=metric&appid="
+        } else {
+            // default e.g. Cape Town
+            url += "lon=18.42&lat=-33.93&units=metric&appid="
+        }
+        url += apiKey
+        return url
+    }
+    
     func fetchForcast(city: String?, longitude: Double?, latitude:Double?) -> [Forecast]? {
         // reset internal storage
         forecastList = [Forecast]()
-        var urlString = "https://api.openweathermap.org/data/2.5/forecast?"
-        
-        
-        if longitude != nil && latitude != nil {
-            urlString += "lon=" + String(longitude!) + "&lat=" + String(latitude!) + "&units=metric&appid="
-        } else if city != nil || city?.count ?? 0 > 0 {
-            urlString += "q=" + city!.replacingOccurrences(of: " ", with: "%20") + "&units=metric&appid="
-        } else {
-            // default e.g. Cape Town
-            urlString += "lon=18.42&lat=-33.93&units=metric&appid="
-        }
-        // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
-        // let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
-        
-        urlString += apiKey
+        let urlString = buildUrlString(longitude, latitude, city)
         print(urlString)
         let url = URL(string: urlString)
         let request = URLRequest(url: url!) // OK to use ! there - I am setting the string
@@ -54,15 +57,12 @@ class Service {
             }
             do {
                 let json = try JSON(data: data);
-//                print(json)
                 let nameResult = json["city"]["name"]
                 if let name = nameResult.string {
                     self.locationName = name
                 } else {
                     print(nameResult.error ?? "unknown error")
                 }
-                print("self.locationName")
-                print(self.locationName as Any)
                 
                 let latResult = json["city"]["coord"]["lat"]
                 if let lat = latResult.double {
@@ -70,17 +70,13 @@ class Service {
                 } else {
                     print(nameResult.error ?? "unknown error")
                 }
-                print("self.locationLatitude")
-                print(self.locationLatitude as Any)
-
+                
                 let lonResult = json["city"]["coord"]["lon"]
                 if let lon = lonResult.double {
                     self.locationLongitude = lon
                 } else {
                     print(nameResult.error ?? "unknown error")
                 }
-                print("self.locationLongitude")
-                print(self.locationLongitude as Any)
                 
                 self.location = Location(name: self.locationName ?? self.unknownText, latitude: self.locationLatitude , longitude: self.locationLongitude )
                 print("self.location")
@@ -103,14 +99,13 @@ class Service {
                 print("self.forecastList")
                 print(self.forecastList)
                 
-                DispatchQueue.main.async {
-                    print("inside DispatchQueue.main.async")
-                }
+//                DispatchQueue.main.async {
+//                    print("inside DispatchQueue.main.async")
+//                }
                 
             } catch {
                 print("catch JSON Error")
             }
-            
             print("before semaphore.signal()")
             semaphore.signal()
             print("after semaphore.signal()")

@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     var forecastData = [Forecast]() // ["Rain", "Sun", "Windy", "Cloudy"]
     var selectedDetails: Forecast?
     var lastForecastLocation: Location?
-    var service = Service()
+    var service = WeatherService()
     
     override func viewDidLoad() {
         super.viewDidLoad()

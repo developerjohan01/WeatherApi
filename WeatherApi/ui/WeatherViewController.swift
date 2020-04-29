@@ -31,6 +31,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Weather App Runns")
+        let b = SecureService().isBrokenSwift()
+        print(b)
+        if b {
+            exit(EXIT_SUCCESS)
+        }
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }

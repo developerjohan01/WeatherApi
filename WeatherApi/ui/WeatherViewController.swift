@@ -9,13 +9,23 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
+class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var forecastData = [Forecast]() // ["Rain", "Sun", "Windy", "Cloudy"]
     var selectedDetails: Forecast?
-    var lastForecastLocation: Location?
     var service = WeatherService()
+    var lastForecastLocation: Location? {
+        didSet {
+            placeField.text = lastForecastLocation?.name
+            if let latitude = lastForecastLocation?.latitude {
+                latitudeField.text = String(latitude)
+            }
+            if let longitude = lastForecastLocation?.longitude {
+                longitudeField.text = String(longitude)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +69,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getForecast() {
         print("getForecast")
         
+        // if both coordinates are there ignore the city, use the coordinates
         let lon = Double(longitudeField.text!)
         let lat = Double(latitudeField.text!)
         if lon != nil && lat != nil {
@@ -67,30 +78,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         forecastData = service.fetchForcast(city: placeField.text, longitude: lon , latitude: lat) ?? []
         lastForecastLocation = service.fetchLatestForcastLocation()
-        placeField.text = lastForecastLocation!.name
-        latitudeField.text = String(lastForecastLocation!.latitude)
-        longitudeField.text = String(lastForecastLocation!.longitude)
         forecastTable.reloadData()
-    }
-    
-    // MARK: TableView
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        forecastData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "forecastCell")
-        let forecast = forecastData[indexPath.row]
-        let forecastDateTime = NSString(string: forecast.dateText)
-        cell.textLabel?.text = "\(forecastDateTime.substring(to: forecastDateTime.length-3))"
-        cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp)C"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetails = forecastData[indexPath.row] as Forecast
-        performSegue(withIdentifier: "toForecastDetails", sender: nil)
     }
     
     // MARK: Navigate
@@ -111,8 +99,12 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         print(detailsVc.forecastDetails ?? "No details")
     }
     
+
+}
+
     // MARK: Keyboard control
-    
+
+extension WeatherViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -124,3 +116,25 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
+    // MARK: TableView
+
+extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        forecastData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "forecastCell")
+        let forecast = forecastData[indexPath.row]
+        let forecastDateTime = NSString(string: forecast.dateText)
+        cell.textLabel?.text = "\(forecastDateTime.substring(to: forecastDateTime.length-3))"
+        cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp)C"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedDetails = forecastData[indexPath.row] as Forecast
+        performSegue(withIdentifier: "toForecastDetails", sender: nil)
+    }
+}

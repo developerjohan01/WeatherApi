@@ -23,6 +23,8 @@ Also see this blog post about "Open Source Code Obfuscation Tool for Protecting 
 
 There are also a lot of interesting articls on the subject of *Hardening* on the [CRYPTOMAThIC blog](https://www.cryptomathic.com/news-events/blog/), for example [Overview of App & Code Hardening for Mobile Banking Apps](https://www.cryptomathic.com/news-events/blog/overview-of-app-code-hardening-for-mobile-banking-apps) 
 
+An open source library for checking JailBreaking is [DTTJailbreakDetection](https://github.com/thii/DTTJailbreakDetection). One can also follow [this advise on Stackoverflow](https://stackoverflow.com/a/40930618/2081047) and write some code in Obective-C (this Stackoverflow example is not in C/C++)
+
 ### Comersial products 
 https://www.guardsquare.com/en/products/ixguard
 

@@ -1,5 +1,7 @@
 # WetherApi
-App is calling the [OpenWheather API](https://openweathermap.org/api) and is displaying forecast as a list.
+iOS App built with Xcode 11.4.1 and targeting iOS 12.4+
+
+The app is calling the [OpenWheather API](https://openweathermap.org/api) and is displaying forecast as a list.
 
 NOTE The [Dark Sky API](https://darksky.net/dev) can no longer be used:
 

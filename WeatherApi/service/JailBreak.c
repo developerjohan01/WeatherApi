@@ -16,14 +16,6 @@ int isJailbroken()
     // TODO
     // Check 2 : Reading and writing in system directories (sandbox violation)
     // TODO
-    return 0;
+    return 0; // 0 is false, anything else is true
 }
 
-// example with a function pointer to a swift callback
-//void cFunctionWithCallback(int a, int (*f)(int))
-//{
-//    printf ("myCFunctionWithCallback in C called with %d\n", a);
-//    printf ("Now calling Swift from C :\n");
-//    int z = f(a);
-//    printf ("Result returned in C:%d\n", z);
-//}

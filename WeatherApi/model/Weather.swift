@@ -11,4 +11,5 @@ import Foundation
 struct Weather {
     var main = "unknown"
     var description = "unknown"
+    var icon = ""
 }

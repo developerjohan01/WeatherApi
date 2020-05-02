@@ -12,7 +12,7 @@ import SwiftyJSON
 class WeatherService {
     
     let unknownText = "Unknown"
-    var locationName: String?
+    var locationCityName: String?
     var locationLatitude = 0.0
     var locationLongitude = 0.0
     var location: Location?
@@ -21,7 +21,7 @@ class WeatherService {
     var forecastList = [Forecast]() // Use an empty array/list insted of Optional
     
     func fetchLatestForcastLocation() -> Location {
-        return location ?? Location(name: locationName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
+        return location ?? Location(name: locationCityName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
     }
     
     // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
@@ -45,6 +45,10 @@ class WeatherService {
     func fetchForcast(city: String?, longitude: Double?, latitude:Double?) -> [Forecast]? {
         // reset internal storage
         forecastList = [Forecast]()
+        locationCityName = nil
+        locationLatitude = 0.0
+        locationLongitude = 0.0
+        
         let urlString = buildUrlString(longitude, latitude, city)
         print(urlString)
         let url = URL(string: urlString)
@@ -60,7 +64,7 @@ class WeatherService {
                 let json = try JSON(data: data);
                 let nameResult = json["city"]["name"]
                 if let name = nameResult.string {
-                    self.locationName = name
+                    self.locationCityName = name
                 } else {
                     print(nameResult.error ?? "unknown error")
                 }
@@ -79,7 +83,7 @@ class WeatherService {
                     print(nameResult.error ?? "unknown error")
                 }
                 
-                self.location = Location(name: self.locationName ?? self.unknownText, latitude: self.locationLatitude , longitude: self.locationLongitude )
+                self.location = Location(name: self.locationCityName ?? self.unknownText, latitude: self.locationLatitude , longitude: self.locationLongitude )
                 print("self.location")
                 print(self.location!)
                 
@@ -89,7 +93,8 @@ class WeatherService {
                         let temp = forecastObject["main"]["temp"].double ?? 0.0
                         let weatherMain = forecastObject["weather"][0]["main"].string ?? self.unknownText
                         let weatherDescription = forecastObject["weather"][0]["description"].string ?? self.unknownText
-                        let w = Weather(main: weatherMain, description: weatherDescription)
+                        let weatherIcon = forecastObject["weather"][0]["icon"].string ?? ""
+                        let w = Weather(main: weatherMain, description: weatherDescription, icon: weatherIcon)
                         let dateText = forecastObject["dt_txt"].string ?? self.unknownText
                         let f = Forecast(temp: temp, weather: w, dateText: dateText)
                         self.forecastList.append(f)

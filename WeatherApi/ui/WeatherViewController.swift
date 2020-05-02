@@ -17,7 +17,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var service = WeatherService()
     var lastForecastLocation: Location? {
         didSet {
-            placeField.text = lastForecastLocation?.name
+            cityNameField.text = lastForecastLocation?.name
             if let latitude = lastForecastLocation?.latitude {
                 latitudeField.text = String(latitude)
             }
@@ -43,13 +43,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations[0]
         print(userLocation)
-        placeField.text = ""
-        latitudeField.text = String(userLocation.coordinate.latitude)
-        longitudeField.text = String(userLocation.coordinate.longitude)
+//        placeField.text = ""
+//        latitudeField.text = String(userLocation.coordinate.latitude)
+//        longitudeField.text = String(userLocation.coordinate.longitude)
+        lastForecastLocation = Location(name: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         locationManager.stopUpdatingLocation()
     }
 
-    @IBOutlet weak var placeField: UITextField!
+    @IBOutlet weak var cityNameField: UITextField!
     
     @IBOutlet weak var latitudeField: UITextField!
     
@@ -65,6 +66,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         getForecast()
     }
     
+    @IBAction func clearInputButton(_ sender: UIButton) {
+        cityNameField.text = nil
+        latitudeField.text = nil
+        longitudeField.text = nil
+        forecastData = [Forecast]()
+        forecastTable.reloadData()
+    }
+    
     func getCoordinates() {
         print("getCoordinates")
         locationManager.requestWhenInUseAuthorization()
@@ -78,10 +87,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let lon = Double(longitudeField.text!)
         let lat = Double(latitudeField.text!)
         if lon != nil && lat != nil {
-            placeField.text = ""
+            cityNameField.text = ""
         }
             
-        forecastData = service.fetchForcast(city: placeField.text, longitude: lon , latitude: lat) ?? []
+        forecastData = service.fetchForcast(city: cityNameField.text, longitude: lon , latitude: lat) ?? []
         lastForecastLocation = service.fetchLatestForcastLocation()
         forecastTable.reloadData()
     }
@@ -134,7 +143,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         let forecast = forecastData[indexPath.row]
         let forecastDateTime = NSString(string: forecast.dateText)
         cell.textLabel?.text = "\(forecastDateTime.substring(to: forecastDateTime.length-3))"
-        cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp)C"
+        cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp.round(to: 1))C"
         return cell
     }
     

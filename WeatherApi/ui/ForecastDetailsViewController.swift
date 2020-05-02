@@ -14,12 +14,20 @@ class ForecastDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         if forecastDetails != nil {
-            outlookLabel.text = "Outlook: \(forecastDetails!.weather.description)"
-            temperatureLabel.text = "Temperature: \(forecastDetails!.temp) C"
-            dateLabel.text = "On the: \(forecastDetails!.dateText)"
+            if let outlook = forecastDetails?.weather.description {
+                outlookLabel.text = "Outlook: \(outlook)"
+            }
+            if let iconName = forecastDetails?.weather.icon {
+                iconImage.image = UIImage(named: iconName)
+            }
+            if let temperature = forecastDetails?.temp {
+                temperatureLabel.text = "Temperature: \(temperature.round(to: 1)) C"
+            }
+            if let date = forecastDetails?.dateText {
+                dateLabel.text = "On the: \(date)"
+            }
         }
     }
     
@@ -29,6 +37,7 @@ class ForecastDetailsViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var iconImage: UIImageView!
     /*
     // MARK: - Navigation
 

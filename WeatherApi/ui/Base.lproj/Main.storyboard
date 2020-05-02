@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -47,7 +47,8 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n75-eQ-cxV">
-                                <rect key="frame" x="126" y="250" width="162" height="30"/>
+                                <rect key="frame" x="120.66666666666669" y="250" width="173" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Get the weather forcast"/>
                                 <connections>
                                     <action selector="getForecastButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHm-Ae-9im"/>
@@ -61,14 +62,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F1t-GW-TQW">
-                                <rect key="frame" x="0.0" y="288" width="414" height="574"/>
+                                <rect key="frame" x="0.0" y="332" width="414" height="530"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="forecastCell" id="8Hk-m5-oTB">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Hk-m5-oTB" id="F0O-Q6-3DJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -81,6 +82,15 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="llA-wz-26d"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-RL-TIz">
+                                <rect key="frame" x="189" y="288" width="36" height="30"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearInputButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cCx-cB-W1x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -90,27 +100,29 @@
                             <constraint firstItem="MJb-jD-ZL4" firstAttribute="top" secondItem="O5c-ZR-oWK" secondAttribute="bottom" constant="8" id="4MU-Y7-hJe"/>
                             <constraint firstItem="MJb-jD-ZL4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="884-p6-BLE"/>
                             <constraint firstItem="3VQ-8w-N4p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9pe-6c-xs2"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="top" secondItem="wfg-RL-TIz" secondAttribute="bottom" constant="14" id="An7-xx-WXp"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Lxa-Vn-PXL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O5c-ZR-oWK" secondAttribute="trailing" constant="20" id="ML9-MM-2aX"/>
                             <constraint firstItem="O5c-ZR-oWK" firstAttribute="top" secondItem="3VQ-8w-N4p" secondAttribute="bottom" constant="8" id="SH9-cr-gYr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MJb-jD-ZL4" secondAttribute="trailing" constant="20" id="SmF-XD-kwC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r6U-GH-GK5" secondAttribute="trailing" constant="20" id="Tn4-Pm-Ehg"/>
                             <constraint firstItem="3VQ-8w-N4p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="Z7i-ic-Q7g"/>
                             <constraint firstItem="O5c-ZR-oWK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bKx-VJ-Zf5"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c1G-gp-4jd"/>
+                            <constraint firstItem="wfg-RL-TIz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c8g-d3-sPh"/>
                             <constraint firstItem="r6U-GH-GK5" firstAttribute="top" secondItem="MJb-jD-ZL4" secondAttribute="bottom" constant="8" id="iAH-dB-bjN"/>
-                            <constraint firstItem="F1t-GW-TQW" firstAttribute="top" secondItem="n75-eQ-cxV" secondAttribute="bottom" constant="8" id="pHd-Sh-B5x"/>
+                            <constraint firstItem="F1t-GW-TQW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iOg-PA-kip"/>
                             <constraint firstItem="n75-eQ-cxV" firstAttribute="top" secondItem="7hY-Ub-CcT" secondAttribute="bottom" constant="8" id="rSI-HR-uzC"/>
-                            <constraint firstItem="F1t-GW-TQW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u8T-FS-sU1"/>
-                            <constraint firstItem="F1t-GW-TQW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vlZ-xD-cXI"/>
+                            <constraint firstItem="wfg-RL-TIz" firstAttribute="top" secondItem="n75-eQ-cxV" secondAttribute="bottom" constant="8" id="vG7-Ae-W5Q"/>
                             <constraint firstItem="r6U-GH-GK5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wyz-3o-uuX"/>
-                            <constraint firstItem="F1t-GW-TQW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yNU-Dx-lib"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cityNameField" destination="O5c-ZR-oWK" id="6ue-6L-6c7"/>
                         <outlet property="forecastTable" destination="F1t-GW-TQW" id="oym-yB-ILP"/>
                         <outlet property="latitudeField" destination="MJb-jD-ZL4" id="V5j-aL-FhS"/>
                         <outlet property="longitudeField" destination="r6U-GH-GK5" id="ZV9-xj-o1U"/>
-                        <outlet property="placeField" destination="O5c-ZR-oWK" id="6ue-6L-6c7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,34 +138,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather forcast details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-yr-hcE">
-                                <rect key="frame" x="90.5" y="14" width="233" height="20"/>
+                                <rect key="frame" x="90.666666666666686" y="14" width="233" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outlook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-8Q-DxH">
-                                <rect key="frame" x="164.5" y="78" width="85" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PnO-Lc-r2S"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="22"/>
+                                <rect key="frame" x="168.33333333333334" y="150" width="77.333333333333343" height="20"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8v-sb-kFo">
-                                <rect key="frame" x="146.5" y="115" width="121" height="19"/>
+                                <rect key="frame" x="146.66666666666666" y="186" width="120.99999999999997" height="19"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoB-Ag-o2Y">
-                                <rect key="frame" x="185" y="172" width="44" height="19"/>
+                                <rect key="frame" x="185" y="213" width="44" height="19"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vlj-LN-yWk">
+                                <rect key="frame" x="157" y="42" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="coX-n8-QOV"/>
+                                    <constraint firstAttribute="height" constant="100" id="lRd-8R-n34"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a46-ob-wmP">
-                                <rect key="frame" x="187.5" y="227" width="39" height="30"/>
+                                <rect key="frame" x="187.66666666666666" y="260" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
                                     <segue destination="WSd-ej-gy7" kind="unwind" unwindAction="unwindToWeatherForecast:" id="dNP-mm-KCk"/>
@@ -162,22 +178,25 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="Afo-hE-tZU"/>
-                            <constraint firstItem="a46-ob-wmP" firstAttribute="top" secondItem="BoB-Ag-o2Y" secondAttribute="bottom" constant="36" id="CCP-gg-tXl"/>
-                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="centerX" secondItem="T8v-sb-kFo" secondAttribute="centerX" id="QoG-20-2KE"/>
-                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="top" secondItem="T8v-sb-kFo" secondAttribute="bottom" constant="38" id="YVA-oh-KE3"/>
-                            <constraint firstItem="a46-ob-wmP" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="Zyg-tg-mhj"/>
-                            <constraint firstItem="RLE-yr-hcE" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="gjK-Mh-EQM"/>
-                            <constraint firstItem="T8v-sb-kFo" firstAttribute="top" secondItem="E0C-8Q-DxH" secondAttribute="bottom" constant="7" id="iHx-fJ-nLQ"/>
-                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="top" secondItem="RLE-yr-hcE" secondAttribute="bottom" constant="44" id="qjf-h1-Zxv"/>
-                            <constraint firstItem="T8v-sb-kFo" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="s7G-Cj-dDH"/>
-                            <constraint firstItem="RLE-yr-hcE" firstAttribute="top" secondItem="12v-2D-bQw" secondAttribute="top" constant="14" id="wWs-5g-oqP"/>
+                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="top" secondItem="Vlj-LN-yWk" secondAttribute="bottom" constant="8" id="9dx-lL-4eH"/>
+                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="FId-oi-MhM"/>
+                            <constraint firstItem="BoB-Ag-o2Y" firstAttribute="top" secondItem="T8v-sb-kFo" secondAttribute="bottom" constant="8" id="QUa-ds-VTh"/>
+                            <constraint firstItem="a46-ob-wmP" firstAttribute="top" secondItem="BoB-Ag-o2Y" secondAttribute="bottom" constant="28" id="UfG-GU-8Di"/>
+                            <constraint firstItem="T8v-sb-kFo" firstAttribute="top" secondItem="E0C-8Q-DxH" secondAttribute="bottom" constant="16" id="XAU-AW-e3m"/>
+                            <constraint firstItem="RLE-yr-hcE" firstAttribute="top" secondItem="12v-2D-bQw" secondAttribute="top" constant="14" id="b4C-l9-v23"/>
+                            <constraint firstItem="Vlj-LN-yWk" firstAttribute="top" secondItem="RLE-yr-hcE" secondAttribute="bottom" constant="8" id="bOb-kI-gUK"/>
+                            <constraint firstItem="Vlj-LN-yWk" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="n2Z-LG-WYI"/>
+                            <constraint firstItem="T8v-sb-kFo" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="nWh-Ab-kjb"/>
+                            <constraint firstItem="a46-ob-wmP" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="q5i-Zv-vsb"/>
+                            <constraint firstItem="E0C-8Q-DxH" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="sTG-PN-E6n"/>
+                            <constraint firstItem="RLE-yr-hcE" firstAttribute="centerX" secondItem="OqA-dy-G1p" secondAttribute="centerX" id="zgn-YP-Xtp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="12v-2D-bQw"/>
                     </view>
                     <navigationItem key="navigationItem" id="AT7-ng-yN6"/>
                     <connections>
                         <outlet property="dateLabel" destination="BoB-Ag-o2Y" id="AO1-cP-EQ8"/>
+                        <outlet property="iconImage" destination="Vlj-LN-yWk" id="M1u-Qj-bat"/>
                         <outlet property="outlookLabel" destination="E0C-8Q-DxH" id="o5h-BB-5Sy"/>
                         <outlet property="temperatureLabel" destination="T8v-sb-kFo" id="Vzt-Ev-2jd"/>
                     </connections>

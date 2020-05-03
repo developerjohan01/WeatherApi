@@ -26,9 +26,7 @@ class WeatherServiceTests: XCTestCase {
     
     func testFetchLatestForcastLocation() {
         let location = service.fetchLatestForcastLocation()
-        XCTAssertTrue(location.name == Constants.unknown)
-        XCTAssertTrue(location.latitude == 0.0)
-        XCTAssertTrue(location.longitude == 0.0)
+        XCTAssertTrue(location == nil)
     }
         
     func testFetchForcast() {

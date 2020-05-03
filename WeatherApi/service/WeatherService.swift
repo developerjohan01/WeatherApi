@@ -11,7 +11,6 @@ import SwiftyJSON
 
 class WeatherService {
     
-    let unknownText = "Unknown"
     var locationCityName: String?
     var locationLatitude = 0.0
     var locationLongitude = 0.0
@@ -21,11 +20,8 @@ class WeatherService {
     var forecastList = [Forecast]() // Use an empty array/list insted of Optional
     
     func fetchLatestForcastLocation() -> Location {
-        return location ?? Location(name: locationCityName ?? unknownText, latitude: locationLatitude, longitude: locationLongitude)
+        return location ?? Location(name: locationCityName ?? Constants.unknown, latitude: locationLatitude, longitude: locationLongitude)
     }
-    
-    // let urlString = "https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&units=metric&appid=" + apiKey
-    // let urlString = "https://api.openweathermap.org/data/2.5/forecast?lon=18.42&lat=-33.93&units=metric&appid=" + apiKey
     
     // fileprivate - This should be private
     func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
@@ -66,24 +62,24 @@ class WeatherService {
                 if let name = nameResult.string {
                     self.locationCityName = name
                 } else {
-                    print(nameResult.error ?? "unknown error")
+                    print(nameResult.error ?? Constants.jsonError)
                 }
                 
                 let latResult = json["city"]["coord"]["lat"]
                 if let lat = latResult.double {
                     self.locationLatitude = lat
                 } else {
-                    print(nameResult.error ?? "unknown error")
+                    print(nameResult.error ?? Constants.jsonError)
                 }
                 
                 let lonResult = json["city"]["coord"]["lon"]
                 if let lon = lonResult.double {
                     self.locationLongitude = lon
                 } else {
-                    print(nameResult.error ?? "unknown error")
+                    print(nameResult.error ?? Constants.jsonError)
                 }
                 
-                self.location = Location(name: self.locationCityName ?? self.unknownText, latitude: self.locationLatitude , longitude: self.locationLongitude )
+                self.location = Location(name: self.locationCityName ?? Constants.unknown, latitude: self.locationLatitude , longitude: self.locationLongitude )
                 print("self.location")
                 print(self.location!)
                 
@@ -91,16 +87,16 @@ class WeatherService {
                 if let forecastList = forecastResult.array {
                     for forecastObject in forecastList {
                         let temp = forecastObject["main"]["temp"].double ?? 0.0
-                        let weatherMain = forecastObject["weather"][0]["main"].string ?? self.unknownText
-                        let weatherDescription = forecastObject["weather"][0]["description"].string ?? self.unknownText
+                        let weatherMain = forecastObject["weather"][0]["main"].string ?? Constants.unknown
+                        let weatherDescription = forecastObject["weather"][0]["description"].string ?? Constants.unknown
                         let weatherIcon = forecastObject["weather"][0]["icon"].string ?? ""
                         let w = Weather(main: weatherMain, description: weatherDescription, icon: weatherIcon)
-                        let dateText = forecastObject["dt_txt"].string ?? self.unknownText
+                        let dateText = forecastObject["dt_txt"].string ?? Constants.unknown
                         let f = Forecast(temp: temp, weather: w, dateText: dateText)
                         self.forecastList.append(f)
                     }
                 } else {
-                    print(forecastResult.error ?? "unknown error")
+                    print(forecastResult.error ?? Constants.jsonError)
                 }
                 print("self.forecastList")
                 print(self.forecastList)
@@ -110,7 +106,7 @@ class WeatherService {
 //                }
                 
             } catch {
-                print("catch JSON Error")
+                print(Constants.jsonError)
             }
             print("before semaphore.signal()")
             semaphore.signal()

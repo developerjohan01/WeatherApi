@@ -9,7 +9,7 @@
 import Foundation
 
 struct Weather {
-    var main = "unknown"
-    var description = "unknown"
+    var main = Constants.unknown
+    var description = Constants.unknown
     var icon = ""
 }

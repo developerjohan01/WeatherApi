@@ -22,6 +22,7 @@
 		AABD9C232456E80000E04181 /* WeatherApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C222456E80000E04181 /* WeatherApiTests.swift */; };
 		AABD9C2E2456E80000E04181 /* WeatherApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C2D2456E80000E04181 /* WeatherApiUITests.swift */; };
 		AAC4115124587725000DE8FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4115024587725000DE8FA /* CoreLocation.framework */; };
+		AAC76402245DBD1F00B7C8A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC76401245DBD1F00B7C8A9 /* Constants.swift */; };
 		AAC7E245245707DC006A7DB4 /* ForecastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */; };
 		AAC7E247245718C2006A7DB4 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7E246245718C2006A7DB4 /* WeatherService.swift */; };
 		AAF0AA9A24575C6300C75F8E /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0AA9924575C6300C75F8E /* Forecast.swift */; };
@@ -75,6 +76,7 @@
 		AABD9C2D2456E80000E04181 /* WeatherApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApiUITests.swift; sourceTree = "<group>"; };
 		AABD9C2F2456E80000E04181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAC4115024587725000DE8FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AAC76401245DBD1F00B7C8A9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AAC7E244245707DC006A7DB4 /* ForecastDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailsViewController.swift; sourceTree = "<group>"; };
 		AAC7E246245718C2006A7DB4 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		AAF0AA9924575C6300C75F8E /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		AAF0AAA2245805FB00C75F8E /* service */ = {
 			isa = PBXGroup;
 			children = (
+				AAC76401245DBD1F00B7C8A9 /* Constants.swift */,
 				AAC7E246245718C2006A7DB4 /* WeatherService.swift */,
 				AA4C56B72459F25700E93690 /* SecureService.swift */,
 				AA4C56BA2459F38E00E93690 /* JailBreak.h */,
@@ -486,6 +489,7 @@
 				AAF0AA9A24575C6300C75F8E /* Forecast.swift in Sources */,
 				AABD9C0E2456E7FF00E04181 /* SceneDelegate.swift in Sources */,
 				AAF0AA9C24575C7300C75F8E /* Weather.swift in Sources */,
+				AAC76402245DBD1F00B7C8A9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

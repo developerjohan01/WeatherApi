@@ -12,9 +12,9 @@ import CoreLocation
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
-    var forecastData = [Forecast]() // ["Rain", "Sun", "Windy", "Cloudy"]
     var selectedDetails: Forecast?
-    var service = WeatherService()
+    // Aggregate business layer keeping the data
+    let weatherForcastAggregate = DomainRepository.shared.weatherAggregate
     var lastForecastLocation: Location? {
         didSet {
             cityNameField.text = lastForecastLocation?.name
@@ -31,7 +31,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Weather App Runns")
-        let b = SecureService().isBrokenSwift()
+        let b = DomainRepository.shared.securityAggregate.isBroken()
         print(b)
         if b {
             exit(EXIT_SUCCESS)
@@ -43,9 +43,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations[0]
         print(userLocation)
-//        placeField.text = ""
-//        latitudeField.text = String(userLocation.coordinate.latitude)
-//        longitudeField.text = String(userLocation.coordinate.longitude)
         lastForecastLocation = Location(name: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         locationManager.stopUpdatingLocation()
     }
@@ -70,19 +67,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         cityNameField.text = nil
         latitudeField.text = nil
         longitudeField.text = nil
-        forecastData = [Forecast]()
+        weatherForcastAggregate.clearFetchResult()
         forecastTable.reloadData()
     }
     
     func getCoordinates() {
-        print("getCoordinates")
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     
     func getForecast() {
-        print("getForecast")
-        
         // if both coordinates are there ignore the city, use the coordinates
         let lon = Double(longitudeField.text!)
         let lat = Double(latitudeField.text!)
@@ -90,8 +84,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             cityNameField.text = ""
         }
             
-        forecastData = service.fetchForcast(city: cityNameField.text, longitude: lon , latitude: lat)
-        lastForecastLocation = service.fetchLatestForcastLocation()
+        weatherForcastAggregate.fetchNewForecast(city: cityNameField.text, longitude: lon , latitude: lat)
+        lastForecastLocation = weatherForcastAggregate.fetchLatestForecastLocation()
         forecastTable.reloadData()
     }
     
@@ -135,12 +129,12 @@ extension WeatherViewController: UITextFieldDelegate {
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        forecastData.count
+        DomainRepository.shared.weatherAggregate.getForecastList().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "forecastCell")
-        let forecast = forecastData[indexPath.row]
+        let forecast = weatherForcastAggregate.getForecastList()[indexPath.row]
         let forecastDateTime = NSString(string: forecast.dateText)
         cell.textLabel?.text = "\(forecastDateTime.substring(to: forecastDateTime.length-3))"
         cell.detailTextLabel?.text = "\(forecast.weather.main)  \(forecast.temp.round(to: 1))C"
@@ -148,7 +142,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetails = forecastData[indexPath.row] as Forecast
+        selectedDetails = weatherForcastAggregate.getForecastList()[indexPath.row] as Forecast
         performSegue(withIdentifier: "toForecastDetails", sender: nil)
     }
 }

@@ -23,8 +23,7 @@ class WeatherService {
         return location ?? Location(name: locationCityName ?? Constants.unknown, latitude: locationLatitude, longitude: locationLongitude)
     }
     
-    // fileprivate - This should be private
-    func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
+    fileprivate func buildUrlString(_ longitude: Double?, _ latitude: Double?, _ city: String?) -> String {
         var url = "https://api.openweathermap.org/data/2.5/forecast?"
         if longitude != nil && latitude != nil {
             url += "lon=" + String(longitude!) + "&lat=" + String(latitude!) + "&units=metric&appid="
@@ -38,7 +37,7 @@ class WeatherService {
         return url
     }
     
-    func fetchForcast(city: String?, longitude: Double?, latitude:Double?) -> [Forecast]? {
+    func fetchForcast(city: String?, longitude: Double?, latitude:Double?) -> [Forecast] {
         // reset internal storage
         forecastList = [Forecast]()
         locationCityName = nil
@@ -49,8 +48,7 @@ class WeatherService {
         print(urlString)
         let url = URL(string: urlString)
         let request = URLRequest(url: url!) // OK to use ! there - I am setting the string
-        //      let request = URLRequest(url: url!,timeoutInterval: Double.infinity) // OK to use ! there - I am setting the string
-        let semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0) // Control the async flow
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print(String(describing: error))

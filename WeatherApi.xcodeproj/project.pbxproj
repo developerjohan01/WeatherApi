@@ -13,6 +13,10 @@
 		AA3505AD245DB01300CDA82D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3505AC245DB01300CDA82D /* Utils.swift */; };
 		AA4C56B82459F25700E93690 /* SecureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4C56B72459F25700E93690 /* SecureService.swift */; };
 		AA4C56BC2459F38E00E93690 /* JailBreak.c in Sources */ = {isa = PBXBuildFile; fileRef = AA4C56BB2459F38E00E93690 /* JailBreak.c */; };
+		AA5D3A19245EE6950020F70C /* ForecastTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D3A18245EE6950020F70C /* ForecastTest.swift */; };
+		AA5D3A1B245EEBB20020F70C /* WeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D3A1A245EEBB20020F70C /* WeatherTest.swift */; };
+		AA5D3A1D245EED860020F70C /* LocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D3A1C245EED860020F70C /* LocationTest.swift */; };
+		AA5D3A1F245EF3210020F70C /* UtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D3A1E245EF3210020F70C /* UtilsTest.swift */; };
 		AABD9C0C2456E7FF00E04181 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C0B2456E7FF00E04181 /* AppDelegate.swift */; };
 		AABD9C0E2456E7FF00E04181 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */; };
 		AABD9C102456E7FF00E04181 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD9C0F2456E7FF00E04181 /* WeatherViewController.swift */; };
@@ -61,6 +65,10 @@
 		AA4C56B92459F38D00E93690 /* WeatherApi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherApi-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA4C56BA2459F38E00E93690 /* JailBreak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JailBreak.h; sourceTree = "<group>"; };
 		AA4C56BB2459F38E00E93690 /* JailBreak.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = JailBreak.c; sourceTree = "<group>"; };
+		AA5D3A18245EE6950020F70C /* ForecastTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTest.swift; sourceTree = "<group>"; };
+		AA5D3A1A245EEBB20020F70C /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
+		AA5D3A1C245EED860020F70C /* LocationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTest.swift; sourceTree = "<group>"; };
+		AA5D3A1E245EF3210020F70C /* UtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTest.swift; sourceTree = "<group>"; };
 		AABD9C082456E7FF00E04181 /* WeatherApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABD9C0B2456E7FF00E04181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABD9C0D2456E7FF00E04181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,8 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				AABD9C222456E80000E04181 /* WeatherApiTests.swift */,
-				AABD9C242456E80000E04181 /* Info.plist */,
 				AAF0CF372458CA3500428042 /* WeatherServiceTest.swift */,
+				AABD9C242456E80000E04181 /* Info.plist */,
+				AA5D3A18245EE6950020F70C /* ForecastTest.swift */,
+				AA5D3A1A245EEBB20020F70C /* WeatherTest.swift */,
+				AA5D3A1C245EED860020F70C /* LocationTest.swift */,
+				AA5D3A1E245EF3210020F70C /* UtilsTest.swift */,
 			);
 			path = WeatherApiTests;
 			sourceTree = "<group>";
@@ -497,7 +509,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5D3A1B245EEBB20020F70C /* WeatherTest.swift in Sources */,
+				AA5D3A1F245EF3210020F70C /* UtilsTest.swift in Sources */,
+				AA5D3A19245EE6950020F70C /* ForecastTest.swift in Sources */,
 				AAF0CF382458CA3500428042 /* WeatherServiceTest.swift in Sources */,
+				AA5D3A1D245EED860020F70C /* LocationTest.swift in Sources */,
 				AABD9C232456E80000E04181 /* WeatherApiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

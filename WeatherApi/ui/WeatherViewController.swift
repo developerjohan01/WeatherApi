@@ -90,7 +90,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             cityNameField.text = ""
         }
             
-        forecastData = service.fetchForcast(city: cityNameField.text, longitude: lon , latitude: lat) ?? []
+        forecastData = service.fetchForcast(city: cityNameField.text, longitude: lon , latitude: lat)
         lastForecastLocation = service.fetchLatestForcastLocation()
         forecastTable.reloadData()
     }

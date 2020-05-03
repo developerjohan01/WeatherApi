@@ -13,7 +13,7 @@ class SecureService {
     //@_silgen_name("fileExists")  // vital for the function being visible from C
     //func fileExists(path: Any) -> Int
     //{
-    //    print ("fileExists called in Swift with ??")
+    //    print ("fileExists called in Swift \(path)")
     //    return 0
     //}
     //

@@ -33,6 +33,7 @@ class WeatherServiceTests: XCTestCase {
         
     func testFetchForcast() {
         let forcast = service.fetchForcast(city: nil, longitude: nil, latitude: nil)
-        XCTAssertTrue(forcast != nil)
+        // XCTAssertTrue(forcast != nil) // Comparing non-optional value of type '[Forecast]' to 'nil' always returns true
+        XCTAssertTrue(forcast.count == 0)
     }
 }

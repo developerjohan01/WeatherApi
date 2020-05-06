@@ -10,6 +10,9 @@
 #define JailBreak_h
 
 #include <stdio.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
 #include "WeatherApi-Bridging-Header.h"
 
 #endif /* JailBreak_h */

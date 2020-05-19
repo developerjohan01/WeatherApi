@@ -1,7 +1,7 @@
-# WetherApi
+# WeatherApi iOS
 iOS App built with Xcode 11.4.1 and targeting iOS 12.4+
 
-The app is calling the [OpenWheather API](https://openweathermap.org/api) and is displaying  a list of forecasts. 
+The app is calling the [OpenWeather API](https://openweathermap.org/api) and is displaying  a list of forecasts. 
 
 [5 day / 3 hour forecast API Documentation](https://openweathermap.org/forecast5)
 
